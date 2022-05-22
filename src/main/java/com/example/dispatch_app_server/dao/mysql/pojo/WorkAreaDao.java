@@ -9,24 +9,19 @@ import java.util.Date;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class UserDao {
+public class WorkAreaDao {
     private int id;
-    private String skill;
-    private int workArea;
     private String name;
-    private int power;
-    private int type;
+    private String scope;
     private Date createTime;
     private Date updateTime;
+
     @Override
-    public String toString(){
-        return "User" +
-                "[id = "+ id +
-                ", skill = "+ skill +
-                ", workArea = "+ workArea +
+    public String toString() {
+        return "WorkArea" +
+                "[id = " + id +
                 ", name = " + name +
-                ", power = " + power +
-                ", type = " + type +
+                ", scope = " + scope +
                 ", createTime = " + createTime +
                 ", upDateTime = " + updateTime +
                 "]";
