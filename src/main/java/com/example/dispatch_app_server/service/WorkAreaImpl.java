@@ -13,8 +13,18 @@ public class WorkAreaImpl implements WorkAreaService {
     private WorkAreaMapper workAreaMapper;
 
     @Override
-    public void insertWorkArea(WorkAreaDao workAreaDao) {
-        workAreaMapper.insertWorkArea(workAreaDao);
+    public int insertWorkArea(WorkAreaDao workAreaDao) {
+        return workAreaMapper.insertWorkArea(workAreaDao);
+    }
+
+    @Override
+    public int deleteWorkAreaById(int id) {
+        return workAreaMapper.deleteWorkAreaById(id);
+    }
+
+    @Override
+    public int updateWorkAreaById(WorkAreaDao workAreaDao) {
+        return workAreaMapper.updateWorkAreaById(workAreaDao);
     }
 
     @Override
@@ -37,8 +47,5 @@ public class WorkAreaImpl implements WorkAreaService {
         return workAreaMapper.getWorkAreaByScope(scope);
     }
 
-    @Override
-    public void updateWorkAreaById(WorkAreaDao workAreaDao) {
-        workAreaMapper.updateWorkAreaById(workAreaDao);
-    }
+
 }

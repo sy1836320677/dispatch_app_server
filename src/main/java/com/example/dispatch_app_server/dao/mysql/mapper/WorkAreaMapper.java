@@ -2,10 +2,7 @@ package com.example.dispatch_app_server.dao.mysql.mapper;
 
 import com.example.dispatch_app_server.dao.mysql.pojo.UserDao;
 import com.example.dispatch_app_server.dao.mysql.pojo.WorkAreaDao;
-import org.apache.ibatis.annotations.Insert;
-import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Select;
-import org.apache.ibatis.annotations.Update;
+import org.apache.ibatis.annotations.*;
 
 import java.util.List;
 
@@ -16,6 +13,12 @@ public interface WorkAreaMapper {
     @Insert("INSERT INTO workarea(w_id, w_name, w_scope) " +
             "VALUES(#{id}, #{name}, #{scope})")
     int insertWorkArea(WorkAreaDao workAreaDao);
+
+    @Delete("DELETE FROM workarea WHERE w_id = #{id}")
+    int deleteWorkAreaById(int id);
+
+    @Update("UPDATE workarea SET w_name = #{name}, w_scope = #{scope} WHERE w_id = #{id}")
+    int updateWorkAreaById(WorkAreaDao workAreaDao);
 
     @Select("SELECT " + fieldListStr + " FROM workarea")
     List<WorkAreaDao> getAllWorkAreas();
@@ -29,6 +32,4 @@ public interface WorkAreaMapper {
     @Select("SELECT " + fieldListStr + " FROM workarea WHERE w_scope LIKE CONCAT('%', #{scope}, '%')")
     List<WorkAreaDao> getWorkAreaByScope(String workArea);
 
-    @Update("UPDATE workarea SET w_name = #{name}, w_scope = #{scope} WHERE w_id = #{id}")
-    void updateWorkAreaById(WorkAreaDao workAreaDao);
 }

@@ -19,8 +19,23 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    public int deleteUserById(int id) {
+        return userMapper.deleteUserById(id);
+    }
+
+    @Override
+    public int updateUserById(UserDao userDao) {
+        return userMapper.updateUserById(userDao);
+    }
+
+    @Override
     public List<UserDao> getAllUsers() {
         return userMapper.getAllUsers();
+    }
+
+    @Override
+    public UserDao getUserById(int id) {
+        return userMapper.getUserById(id);
     }
 
     @Override
@@ -33,14 +48,10 @@ public class UserServiceImpl implements UserService {
         return userMapper.getUserByWorkArea(workArea);
     }
 
-    @Override
-    public List<UserDao> getUsersType(int type) {
-        return userMapper.getUserByType(type);
-    }
 
     @Override
-    public int updateUserById(UserDao userDao) {
-        return userMapper.updateUserById(userDao);
+    public List<UserDao> getUsersByName(String name) {
+        return userMapper.getUserByName(name);
     }
 
     @Override
@@ -49,7 +60,9 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public UserDao getUserById(int id) {
-        return userMapper.getUserById(id);
+    public List<UserDao> getUsersType(int type) {
+        return userMapper.getUserByType(type);
     }
+
+
 }

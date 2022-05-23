@@ -1,10 +1,7 @@
 package com.example.dispatch_app_server.dao.mysql.mapper;
 
 import com.example.dispatch_app_server.dao.mysql.pojo.UserDao;
-import org.apache.ibatis.annotations.Insert;
-import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Select;
-import org.apache.ibatis.annotations.Update;
+import org.apache.ibatis.annotations.*;
 
 import java.util.List;
 
@@ -15,6 +12,12 @@ public interface UserMapper {
     @Insert("INSERT INTO user(u_id, u_skill, u_workarea, u_name, u_power, u_type) " +
             "VALUES(#{id}, #{skill}, #{workArea}, #{name}, #{power}, #{type})")
     int insertUser(UserDao userDao);
+
+    @Delete("DELETE FROM user WHERE u_id = #{id}")
+    int deleteUserById(int id);
+
+    @Update("UPDATE user SET u_skill = #{skill}, u_workarea = #{workArea}, u_name = #{name},u_power = #{power}, u_type = #{type} WHERE u_id = #{id}")
+    int updateUserById(UserDao userDao);
 
     @Select("SELECT " + fieldListStr + " FROM user")
     List<UserDao> getAllUsers();
@@ -28,13 +31,14 @@ public interface UserMapper {
     @Select("SELECT " + fieldListStr + " FROM user WHERE u_workarea = #{workArea}")
     List<UserDao> getUserByWorkArea(int workArea);
 
-    @Select("SELECT " + fieldListStr + " FROM user WHERE u_type = #{type}")
-    List<UserDao> getUserByType(int type);
+
+    @Select("SELECT " + fieldListStr + " FROM user WHERE u_name like CONCAT('%',#{name},'%')")
+    List<UserDao> getUserByName(String name);
 
     @Select("SELECT " + fieldListStr + " FROM user WHERE u_power = #{power}")
     List<UserDao> getUsersByPower(int power);
 
-    @Update("UPDATE user SET u_skill = #{skill}, u_workarea = #{workArea}, u_name = #{name},u_power = #{power}, u_type = #{type} WHERE u_id = #{id}")
-    int updateUserById(UserDao userDao);
+    @Select("SELECT " + fieldListStr + " FROM user WHERE u_type = #{type}")
+    List<UserDao> getUserByType(int type);
 
 }

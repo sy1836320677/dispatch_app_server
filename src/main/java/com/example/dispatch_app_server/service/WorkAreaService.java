@@ -5,7 +5,9 @@ import com.example.dispatch_app_server.dao.mysql.pojo.WorkAreaDao;
 import java.util.List;
 
 public interface WorkAreaService {
-    void insertWorkArea(WorkAreaDao workAreaDao);
+    int insertWorkArea(WorkAreaDao workAreaDao);
+
+    int deleteWorkAreaById(int id);
 
     List<WorkAreaDao> getAllWorkAreas();
 
@@ -15,5 +17,5 @@ public interface WorkAreaService {
 
     List<WorkAreaDao> getWorkAreaByScope(String scope);
 
-    void updateWorkAreaById(WorkAreaDao workAreaDao);
+    int updateWorkAreaById(WorkAreaDao workAreaDao);
 }
