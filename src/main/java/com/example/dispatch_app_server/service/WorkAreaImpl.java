@@ -18,7 +18,7 @@ public class WorkAreaImpl implements WorkAreaService {
     }
 
     @Override
-    public int deleteWorkAreaById(int id) {
+    public int deleteWorkAreaById(Integer id) {
         return workAreaMapper.deleteWorkAreaById(id);
     }
 
@@ -33,19 +33,13 @@ public class WorkAreaImpl implements WorkAreaService {
     }
 
     @Override
-    public WorkAreaDao getWorkAreaById(int id) {
+    public WorkAreaDao getWorkAreaById(Integer id) {
         return workAreaMapper.getWorkAreaById(id);
     }
 
     @Override
-    public List<WorkAreaDao> getWorkAreaByName(String name) {
-        return workAreaMapper.getWorkAreaByName(name);
+    public List<WorkAreaDao> searchWorkArea(Integer id, String name, String scope) {
+        return workAreaMapper.searchWorkArea(id, name, scope);
     }
-
-    @Override
-    public List<WorkAreaDao> getWorkAreaByScope(String scope) {
-        return workAreaMapper.getWorkAreaByScope(scope);
-    }
-
 
 }

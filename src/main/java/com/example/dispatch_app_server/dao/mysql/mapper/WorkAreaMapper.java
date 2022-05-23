@@ -15,7 +15,7 @@ public interface WorkAreaMapper {
     int insertWorkArea(WorkAreaDao workAreaDao);
 
     @Delete("DELETE FROM workarea WHERE w_id = #{id}")
-    int deleteWorkAreaById(int id);
+    int deleteWorkAreaById(Integer id);
 
     @Update("UPDATE workarea SET w_name = #{name}, w_scope = #{scope} WHERE w_id = #{id}")
     int updateWorkAreaById(WorkAreaDao workAreaDao);
@@ -24,12 +24,24 @@ public interface WorkAreaMapper {
     List<WorkAreaDao> getAllWorkAreas();
 
     @Select("SELECT " + fieldListStr + " FROM workarea WHERE w_id = #{id}")
-    WorkAreaDao getWorkAreaById(int id);
+    WorkAreaDao getWorkAreaById(Integer id);
 
-    @Select("SELECT " + fieldListStr + " FROM workarea WHERE w_name like CONCAT('%',#{name},'%')")
-    List<WorkAreaDao> getWorkAreaByName(String name);
-
-    @Select("SELECT " + fieldListStr + " FROM workarea WHERE w_scope LIKE CONCAT('%', #{scope}, '%')")
-    List<WorkAreaDao> getWorkAreaByScope(String workArea);
-
+    @Select({
+            "<script>",
+            "SELECT",
+            fieldListStr,
+            "FROM workarea",
+            "WHERE 1 = 1",
+            "<if test = 'id != null'>",
+            "AND w_id = #{id}",
+            "</if>",
+            "<if test = 'name != null'>",
+            "AND w_name LIKE CONCAT('%', #{name}, '%')",
+            "</if>",
+            "<if test = 'scope != null'>",
+            "AND w_scope LIKE CONCAT('%', #{scope}, '%')",
+            "</if>",
+            "</script>"
+    })
+    List<WorkAreaDao> searchWorkArea(Integer id, String name, String scope);
 }

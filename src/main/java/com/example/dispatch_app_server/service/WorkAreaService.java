@@ -7,15 +7,13 @@ import java.util.List;
 public interface WorkAreaService {
     int insertWorkArea(WorkAreaDao workAreaDao);
 
-    int deleteWorkAreaById(int id);
+    int deleteWorkAreaById(Integer id);
+
+    int updateWorkAreaById(WorkAreaDao workAreaDao);
 
     List<WorkAreaDao> getAllWorkAreas();
 
-    WorkAreaDao getWorkAreaById(int id);
+    WorkAreaDao getWorkAreaById(Integer id);
 
-    List<WorkAreaDao> getWorkAreaByName(String name);
-
-    List<WorkAreaDao> getWorkAreaByScope(String scope);
-
-    int updateWorkAreaById(WorkAreaDao workAreaDao);
+    List<WorkAreaDao> searchWorkArea(Integer id, String name, String scope);
 }

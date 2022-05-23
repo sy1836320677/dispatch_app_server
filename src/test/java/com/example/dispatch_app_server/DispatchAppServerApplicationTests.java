@@ -32,12 +32,9 @@ class DispatchAppServerApplicationTests {
     @Test
     void testGet() {
         System.out.println(userService.getAllUsers());
-        System.out.println(userService.getUsersBySkill("卡车"));
-        System.out.println(userService.getUsersByWorkArea(1));
-        System.out.println(userService.getUsersType(2));
-        UserDao userDao = userService.getUserById(1);
-        userDao.setSkill("运输工");
-        userService.updateUserById(userDao);
+        List<UserDao> userDao = userService.searchUser(1,null,null,null,null,null);
+        userDao.get(0).setSkill("运输工");
+        userService.updateUserById(userDao.get(0));
         System.out.println(userService.getAllUsers());
     }
 

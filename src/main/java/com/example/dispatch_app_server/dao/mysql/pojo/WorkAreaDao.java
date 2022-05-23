@@ -10,7 +10,7 @@ import java.util.Date;
 @NoArgsConstructor
 @AllArgsConstructor
 public class WorkAreaDao {
-    private int id;
+    private Integer id;
     private String name;
     private String scope;
     private Date createTime;

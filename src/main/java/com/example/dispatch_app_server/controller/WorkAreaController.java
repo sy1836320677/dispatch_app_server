@@ -25,7 +25,7 @@ public class WorkAreaController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseResult deleteById(@PathVariable int id) {
+    public ResponseResult deleteById(@PathVariable Integer id) {
         int res = workAreaService.deleteWorkAreaById(id);
         if(res < 1) {
             return ResponseResult.newFailResult();
@@ -54,33 +54,14 @@ public class WorkAreaController {
         }
     }
 
-    @GetMapping("/{id}")
-    public ResponseResult<WorkAreaDao> getWorkAreaById(@PathVariable int id) {
-        WorkAreaDao workAreaDao = workAreaService.getWorkAreaById(id);
-        if(workAreaDao != null) {
-            return ResponseResult.newSuccessResult(workAreaDao);
-        } else {
-            return ResponseResult.newFailResult();
-        }
-    }
 
-    @GetMapping("/name/{name}")
-    public ResponseResult<List<WorkAreaDao>> getWorkAreasByName(@PathVariable String name) {
-        List<WorkAreaDao> workAreaDao = workAreaService.getWorkAreaByName(name);
-        if(workAreaDao != null) {
-            return ResponseResult.newSuccessResult(workAreaDao);
+    @GetMapping("/search")
+    public ResponseResult<List<WorkAreaDao>> searchWorkArea(@RequestParam(required = false) Integer id, @RequestParam(required = false) String name, @RequestParam(required = false) String scope) {
+        List<WorkAreaDao> workAreaDaoList = workAreaService.searchWorkArea(id, name, scope);
+        if(workAreaDaoList.size() != 0) {
+            return ResponseResult.newSuccessResult(workAreaDaoList);
         } else {
             return ResponseResult.newFailResult();
         }
     }
-    @GetMapping("/scope/{scope}")
-    public ResponseResult<List<WorkAreaDao>> getWorkAreasByScope(@PathVariable String scope) {
-        List<WorkAreaDao> workAreaDao = workAreaService.getWorkAreaByScope(scope);
-        if(workAreaDao != null) {
-            return ResponseResult.newSuccessResult(workAreaDao);
-        } else {
-            return ResponseResult.newFailResult();
-        }
-    }
-
 }

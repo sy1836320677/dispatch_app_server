@@ -19,7 +19,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public int deleteUserById(int id) {
+    public int deleteUserById(Integer id) {
         return userMapper.deleteUserById(id);
     }
 
@@ -34,34 +34,8 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public UserDao getUserById(int id) {
-        return userMapper.getUserById(id);
-    }
-
-    @Override
-    public List<UserDao> getUsersBySkill(String skill) {
-        return userMapper.getUserBySkill(skill);
-    }
-
-    @Override
-    public List<UserDao> getUsersByWorkArea(int workArea) {
-        return userMapper.getUserByWorkArea(workArea);
-    }
-
-
-    @Override
-    public List<UserDao> getUsersByName(String name) {
-        return userMapper.getUserByName(name);
-    }
-
-    @Override
-    public List<UserDao> getUsersByPower(int power) {
-        return userMapper.getUsersByPower(power);
-    }
-
-    @Override
-    public List<UserDao> getUsersType(int type) {
-        return userMapper.getUserByType(type);
+    public List<UserDao> searchUser(Integer id, String skill, Integer workArea, String name, Integer power, Integer type) {
+        return userMapper.searchUser(id, skill, workArea, name, power, type);
     }
 
 

@@ -7,22 +7,12 @@ import java.util.List;
 public interface UserService {
     int insertUser(UserDao userDao);
 
-    int deleteUserById(int id);
+    int deleteUserById(Integer id);
 
     int updateUserById(UserDao userDao);
 
     List<UserDao> getAllUsers();
 
-    UserDao getUserById(int id);
-
-    List<UserDao> getUsersBySkill(String skill);
-
-    List<UserDao> getUsersByWorkArea(int workArea);
-
-    List<UserDao> getUsersByName(String name);
-
-    List<UserDao> getUsersByPower(int power);
-
-    List<UserDao> getUsersType(int type);
+    List<UserDao> searchUser(Integer id, String skill, Integer workArea, String name, Integer power, Integer type);
 
 }

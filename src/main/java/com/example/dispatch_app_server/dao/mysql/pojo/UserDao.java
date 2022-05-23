@@ -10,12 +10,12 @@ import java.util.Date;
 @NoArgsConstructor
 @AllArgsConstructor
 public class UserDao {
-    private int id;
+    private Integer id;
     private String skill;
-    private int workArea;
+    private Integer workArea;
     private String name;
-    private int power;
-    private int type;
+    private Integer power;
+    private Integer type;
     private Date createTime;
     private Date updateTime;
     @Override
