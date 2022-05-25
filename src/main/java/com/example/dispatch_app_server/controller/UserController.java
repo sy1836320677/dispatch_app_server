@@ -7,13 +7,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-
+@CrossOrigin
 @RestController
 @RequestMapping("user")
 public class UserController {
     @Autowired
     private UserService userService;
-
 
     @PostMapping("")
     public ResponseResult addUser(@RequestBody UserDao userDao) {
@@ -62,14 +61,13 @@ public class UserController {
                                                      @RequestParam(required = false) String name,
                                                      @RequestParam(required = false) Integer power,
                                                      @RequestParam(required = false) Integer type
-                                                     ) {
+    ) {
         List<UserDao> userDaoList = userService.searchUser(id, skill, workArea, name, power, type);
-        if(userDaoList.size() < 1) {
+        if (userDaoList.size() < 1) {
             return ResponseResult.newFailResult();
         } else {
             return ResponseResult.newSuccessResult(userDaoList);
         }
     }
-
 
 }
