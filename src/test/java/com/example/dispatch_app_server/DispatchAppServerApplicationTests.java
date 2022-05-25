@@ -12,50 +12,7 @@ import java.util.List;
 
 @SpringBootTest
 class DispatchAppServerApplicationTests {
-    @Autowired
-    private UserService userService;
-
-    @Autowired
-    private WorkAreaService workAreaService;
-
     @Test
     void contextLoads() {
-    }
-
-    @Test
-    void testInsert() {
-        UserDao userDao = new UserDao();
-        userDao.setName("李华");
-        userService.insertUser(userDao);
-    }
-
-    @Test
-    void testGet() {
-        System.out.println(userService.getAllUsers());
-        List<UserDao> userDao = userService.searchUser(1,null,null,null,null,null);
-        userDao.get(0).setSkill("运输工");
-        userService.updateUserById(userDao.get(0));
-        System.out.println(userService.getAllUsers());
-    }
-
-    @Test
-    void testWorkAreaAdd() {
-        WorkAreaDao workAreaDao = new WorkAreaDao();
-        workAreaDao.setName("E");
-        workAreaDao.setScope("休息区");
-        workAreaService.insertWorkArea(workAreaDao);
-        WorkAreaDao workAreaDao2 = new WorkAreaDao();
-        workAreaDao.setName("F");
-        workAreaDao.setScope("已完成区");
-        workAreaService.insertWorkArea(workAreaDao);
-        WorkAreaDao workAreaDao3 = new WorkAreaDao();
-        workAreaDao.setName("G");
-        workAreaDao.setScope("丘陵区");
-        workAreaService.insertWorkArea(workAreaDao);
-        System.out.println(workAreaService.getAllWorkAreas());
-    }
-    @Test
-    void testWorkAreaGet() {
-
     }
 }
