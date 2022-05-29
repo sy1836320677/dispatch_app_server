@@ -3,8 +3,6 @@ package com.example.dispatch_app_server.controller;
 import com.example.dispatch_app_server.commons.web.ResponseResult;
 import com.example.dispatch_app_server.dao.mysql.pojo.JobDao;
 import com.example.dispatch_app_server.service.JobService;
-import org.apache.ibatis.annotations.Delete;
-import org.apache.ibatis.annotations.Update;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
