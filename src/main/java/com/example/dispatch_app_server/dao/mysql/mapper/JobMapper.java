@@ -53,7 +53,7 @@ public interface JobMapper {
      * */
     @Select("SELECT" +
             sql +
-            "FROM job WHERE j_due_date <= #{Date}")
+            "FROM job WHERE j_due_date >= #{Date}")
     public List<JobDao> jobListLTDate(Date Date);
 
     /*
@@ -62,14 +62,14 @@ public interface JobMapper {
      * */
     @Select("SELECT" +
             sql +
-            "FROM job WHERE j_due_date >= #{Date}")
+            "FROM job WHERE j_due_date <= #{Date}")
     public List<JobDao> jobListETDate(Date Date);
 
     /*
      * 查找作业进度大于等于目标值的作业列表
      * @param process 作业进度目标值
      * */
-    @Select("SELECT" +
+    @Select("SELECT" + sql +
             "FROM job WHERE j_process >= #{process}")
     public List<JobDao> jobListMTProcess(Integer process);
 
@@ -77,7 +77,7 @@ public interface JobMapper {
      * 查找作业进度小于等于目标值的作业列表
      * @param process 作业进度目标值
      * */
-    @Select("SELECT" +
+    @Select("SELECT" + sql +
             "FROM job WHERE j_process <= #{process}")
     public List<JobDao> jobListLTProcess(Integer process);
 
