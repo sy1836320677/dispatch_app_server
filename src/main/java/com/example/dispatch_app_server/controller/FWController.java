@@ -33,7 +33,7 @@ public class FWController {
             return ResponseResult.newSuccessResult();
         } else {
             ResponseResult response = ResponseResult.newSuccessResult();
-            response.setMsg("接触绑定失败：该设备还未绑定工区");
+            response.setMsg("解除绑定失败：该设备还未绑定工区");
             return response;
         }
     }
