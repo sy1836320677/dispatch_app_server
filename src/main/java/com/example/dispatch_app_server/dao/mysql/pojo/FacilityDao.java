@@ -18,6 +18,7 @@ public class FacilityDao {
     private Integer type;
     private Integer workType;
     private Integer size;
+    private String name;
     @JsonFormat(pattern = "yyyy-MM-dd-HH:mm:ss", timezone = "GMT+8")
     private Date createTime;
     @JsonFormat(pattern = "yyyy-MM-dd-HH:mm:ss", timezone = "GMT+8")
