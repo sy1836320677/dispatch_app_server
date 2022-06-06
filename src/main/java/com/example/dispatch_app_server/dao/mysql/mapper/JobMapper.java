@@ -14,6 +14,7 @@ public interface JobMapper {
 
     @Insert("INSERT INTO job(j_name, j_due_date, j_process) " +
             "VALUES(#{name}, #{dueDate}, #{process})")
+    @Options(useGeneratedKeys=true, keyProperty="id", keyColumn="j_id")
     public int addJob(JobDao jobDao);
 
     @Delete("DELETE FROM job WHERE j_id = #{id}")
