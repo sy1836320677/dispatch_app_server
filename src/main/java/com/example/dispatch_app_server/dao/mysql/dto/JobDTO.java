@@ -17,7 +17,8 @@ public class JobDTO {
     @JsonFormat(pattern = "yyyy-MM-dd-HH:mm:ss", timezone = "GMT+8")
     private Date dueDate;
     private Integer process;
-    @JsonFormat(pattern = "yyyy-MM-dd-HH:mm:ss", timezone = "GMT+8")
+    @JsonFormat
     private List<JobNeedPeoplePojo> NeedPeopleList;
+    @JsonFormat
     private List<JobNeedFacilityPojo> NeedFacilityList;
 }

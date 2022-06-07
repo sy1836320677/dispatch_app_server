@@ -9,7 +9,7 @@ import java.util.List;
 
 @Mapper
 public interface JobMapper {
-    String sql = " j_id AS id, j_name AS name, j_due_date As dueDate, j_process AS process, create_time AS createTime, update_time AS updateTime ";
+    String sql = " j_id AS id, j_name AS name, j_due_date As dueDate, j_process AS process, create_time AS createTime, update_time AS updateTime, need_people, need_facility ";
 
 
     @Insert("INSERT INTO job(j_name, j_due_date, j_process, need_people, need_facility) " +
