@@ -13,7 +13,6 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 public class JobDTO {
-    private Integer id;
     private String name;
     @JsonFormat(pattern = "yyyy-MM-dd-HH:mm:ss", timezone = "GMT+8")
     private Date dueDate;
@@ -21,7 +20,4 @@ public class JobDTO {
     @JsonFormat(pattern = "yyyy-MM-dd-HH:mm:ss", timezone = "GMT+8")
     private List<JobNeedPeoplePojo> NeedPeopleList;
     private List<JobNeedFacilityPojo> NeedFacilityList;
-    private Date createTime;
-    @JsonFormat(pattern = "yyyy-MM-dd-HH:mm:ss", timezone = "GMT+8")
-    private Date updateTime;
 }
