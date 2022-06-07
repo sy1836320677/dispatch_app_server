@@ -1,6 +1,7 @@
 package com.example.dispatch_app_server.controller;
 
 import com.example.dispatch_app_server.commons.web.ResponseResult;
+import com.example.dispatch_app_server.dao.mysql.dto.JobDTO;
 import com.example.dispatch_app_server.dao.mysql.pojo.JobDao;
 import com.example.dispatch_app_server.service.JobService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,7 +18,8 @@ public class JobController {
     private JobService jobService;
 
     @PostMapping("/")
-    public ResponseResult addJob(@RequestBody JobDao jobDao) {
+    public ResponseResult addJob(@RequestBody JobDTO jobDTO) {
+        JobDao jobDao=JobDao.transJobDtoToPojo(jobDTO);
         int res = jobService.addJob(jobDao);
         if (res == 1) {
             return ResponseResult.newSuccessResult(jobService.getJobById(jobDao.getId()));
