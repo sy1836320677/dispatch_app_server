@@ -19,7 +19,7 @@ public class JobController {
 
     @PostMapping("/")
     public ResponseResult addJob(@RequestBody JobDTO jobDTO) {
-        JobDao jobDao=JobDao.transJobDtoToPojo(jobDTO);
+        JobDao jobDao = JobDao.transJobDtoToPojo(jobDTO);
         int res = jobService.addJob(jobDao);
         if (res == 1) {
             return ResponseResult.newSuccessResult(jobService.getJobById(jobDao.getId()));

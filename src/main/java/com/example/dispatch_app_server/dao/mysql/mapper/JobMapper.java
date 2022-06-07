@@ -12,8 +12,8 @@ public interface JobMapper {
     String sql = " j_id AS id, j_name AS name, j_due_date As dueDate, j_process AS process, create_time AS createTime, update_time AS updateTime ";
 
 
-    @Insert("INSERT INTO job(j_name, j_due_date, j_process) " +
-            "VALUES(#{name}, #{dueDate}, #{process})")
+    @Insert("INSERT INTO job(j_name, j_due_date, j_process, need_people, need_facility) " +
+            "VALUES(#{name}, #{dueDate}, #{process}, #{need_people}, #{need_facility})")
     @Options(useGeneratedKeys=true, keyProperty="id", keyColumn="j_id")
     public int addJob(JobDao jobDao);
 
