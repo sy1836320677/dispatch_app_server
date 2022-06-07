@@ -58,7 +58,7 @@ public class JobDao {
         StringBuffer sf2=new StringBuffer();
         int flag2=0;
         for(JobNeedFacilityPojo pojo:needFacilityList){
-            sf1.append(pojo.getType()+":"+pojo.getNumber());
+            sf2.append(pojo.getType()+":"+pojo.getNumber());
             flag2++;
             if(flag2!=needPeopleList.size()){
                 sf2.append(",");
