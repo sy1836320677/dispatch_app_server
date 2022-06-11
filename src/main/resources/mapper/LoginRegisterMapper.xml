@@ -2,16 +2,14 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.example.dispatch_app_server.dao.mysql.mapper.LoginRegisterMapper">
     <select id="findByUsername" resultType="com.example.dispatch_app_server.dao.mysql.pojo.LoginRegisterPojo">
-        SELECT id,password
-        FROM user
-        WHERE
-            username=#{username}
+        SELECT id, password
+        FROM login_register
+        WHERE username = #{username}
     </select>
     <select id="findUserById" resultType="com.example.dispatch_app_server.dao.mysql.pojo.LoginRegisterPojo">
-        SELECT username,password
-        FROM user
-        WHERE
-            id=#{id}
+        SELECT username, password
+        FROM login_register
+        WHERE id = #{id}
     </select>
 
 </mapper>
