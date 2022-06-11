@@ -5,9 +5,11 @@ import com.example.dispatch_app_server.commons.web.ResponseResult;
 import com.example.dispatch_app_server.dao.mysql.dto.JobDTO;
 import com.example.dispatch_app_server.dao.mysql.pojo.JobDao;
 import com.example.dispatch_app_server.service.JobService;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.Date;
 import java.util.List;
 
@@ -20,7 +22,11 @@ public class JobController {
 
     @PostMapping("/")
     @UserLoginToken
-    public ResponseResult addJob(@RequestBody JobDTO jobDTO) {
+    public ResponseResult addJob(HttpServletRequest httpServletRequest,@RequestBody JobDTO jobDTO) {
+        String token = httpServletRequest.getHeader("token");// 从 http 请求头中取出 token
+        if(StringUtils.equals(token,null)){
+            return ResponseResult.newFailResult("无token,用户未登陆");
+        }
         JobDao jobDao=JobDao.transJobDtoToPojo(jobDTO);
         int res = jobService.addJob(jobDao);
         if (res == 1) {
