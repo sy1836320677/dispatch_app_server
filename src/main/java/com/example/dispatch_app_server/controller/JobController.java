@@ -24,7 +24,7 @@ public class JobController {
     @UserLoginToken
     public ResponseResult addJob(HttpServletRequest httpServletRequest,@RequestBody JobDTO jobDTO) {
         String token = httpServletRequest.getHeader("token");// 从 http 请求头中取出 token
-        if(StringUtils.equals(token,null)){
+        if(token==null){
             return ResponseResult.newFailResult("无token,用户未登陆");
         }
         JobDao jobDao=JobDao.transJobDtoToPojo(jobDTO);
