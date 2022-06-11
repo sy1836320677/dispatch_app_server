@@ -13,6 +13,6 @@ public interface UserService {
 
     List<UserDao> getAllUsers();
 
-    List<UserDao> searchUser(Integer id, String skill, Integer workArea, String name, Integer power, Integer type);
+    List<UserDao> searchUser(Integer id, String skill, String name, Integer power, Integer type);
 
 }

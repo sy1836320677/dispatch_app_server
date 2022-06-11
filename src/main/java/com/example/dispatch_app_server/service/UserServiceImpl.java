@@ -34,8 +34,8 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public List<UserDao> searchUser(Integer id, String skill, Integer workArea, String name, Integer power, Integer type) {
-        return userMapper.searchUser(id, skill, workArea, name, power, type);
+    public List<UserDao> searchUser(Integer id, String skill, String name, Integer power, Integer type) {
+        return userMapper.searchUser(id, skill, name, power, type);
     }
 
 

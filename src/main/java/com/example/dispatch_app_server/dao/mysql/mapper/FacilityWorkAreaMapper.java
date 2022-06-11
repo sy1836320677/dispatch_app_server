@@ -10,7 +10,7 @@ import java.util.List;
 
 @Mapper
 public interface FacilityWorkAreaMapper {
-    @Insert("INSERT INTO facility_workarea(f_id, w_id) VALUES(#{facilityID}, #{workAreaID}) WHERE f_id NOT IN()")
+    @Insert("INSERT INTO facility_workarea(f_id, w_id) VALUES(#{facilityID}, #{workAreaID}) WHERE f_id NOT IN(SELECT f_id FROM facility_workarea)")
     public int bindFacilityToWorkArea(int facilityID, int workAreaID);
 
     @Delete("DELETE FROM facility_workarea WHERE f_id = #{facilityID} AND w_id = #{workAreaID}")

@@ -12,7 +12,6 @@ import java.util.Date;
 public class UserDao {
     private Integer id;
     private String skill;
-    private Integer workArea;
     private String name;
     private Integer power;
     private Integer type;
@@ -23,7 +22,6 @@ public class UserDao {
         return "User" +
                 "[id = "+ id +
                 ", skill = "+ skill +
-                ", workArea = "+ workArea +
                 ", name = " + name +
                 ", power = " + power +
                 ", type = " + type +

@@ -75,12 +75,11 @@ public class UserController {
     @GetMapping("/search")
     public ResponseResult<List<UserDao>> searchUsers(@RequestParam(required = false) Integer id,
                                                      @RequestParam(required = false) String skill,
-                                                     @RequestParam(required = false) Integer workArea,
                                                      @RequestParam(required = false) String name,
                                                      @RequestParam(required = false) Integer power,
                                                      @RequestParam(required = false) Integer type
     ) {
-        List<UserDao> userDaoList = userService.searchUser(id, skill, workArea, name, power, type);
+        List<UserDao> userDaoList = userService.searchUser(id, skill, name, power, type);
         if (userDaoList.size() < 1) {
             return ResponseResult.newFailResult();
         } else {
