@@ -1,11 +1,13 @@
 package com.example.dispatch_app_server.controller;
 
+import com.example.dispatch_app_server.annotation.UserLoginToken;
 import com.example.dispatch_app_server.commons.web.ResponseResult;
 import com.example.dispatch_app_server.dao.mysql.pojo.FacilityDao;
 import com.example.dispatch_app_server.service.FacilityImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 @RestController
@@ -17,7 +19,10 @@ public class FacilityController {
     private FacilityImpl facilityImpl;
 
     @PostMapping("/")
-    public ResponseResult addFacility(@RequestBody FacilityDao facilityDao) {
+    @UserLoginToken
+    public ResponseResult addFacility(HttpServletRequest httpServletRequest, @RequestBody FacilityDao facilityDao) {
+        String token = httpServletRequest.getHeader("token");
+        if(token == null) return ResponseResult.newFailResult("用户未登陆,请登录后重试");
         int res = facilityImpl.addFacility(facilityDao);
         if (res == 1) {
             return ResponseResult.newSuccessResult();

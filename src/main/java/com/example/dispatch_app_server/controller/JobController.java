@@ -37,7 +37,12 @@ public class JobController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseResult deleteById(@PathVariable Integer id) {
+    @UserLoginToken
+    public ResponseResult deleteById(HttpServletRequest httpServletRequest, @PathVariable Integer id) {
+        String token = httpServletRequest.getHeader("token");// 从 http 请求头中取出 token
+        if(token==null){
+            return ResponseResult.newFailResult("用户未登陆,请登录后重试");
+        }
         int res = jobService.deleteJobById(id);
         if (res != 1) {
             return ResponseResult.newFailResult();
@@ -47,7 +52,12 @@ public class JobController {
     }
 
     @PutMapping("/")
-    public ResponseResult updateById(@RequestBody JobDao jobDao) {
+    @UserLoginToken
+    public ResponseResult updateById(HttpServletRequest httpServletRequest, @RequestBody JobDao jobDao) {
+        String token = httpServletRequest.getHeader("token");// 从 http 请求头中取出 token
+        if(token==null){
+            return ResponseResult.newFailResult("用户未登陆,请登录后重试");
+        }
         int res = jobService.updateJobById(jobDao);
         if (res != 1) {
             return ResponseResult.newFailResult();
