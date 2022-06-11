@@ -32,7 +32,12 @@ public class FacilityController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseResult deleteFacilityById(@PathVariable int id) {
+    @UserLoginToken
+    public ResponseResult deleteFacilityById(HttpServletRequest httpServletRequest, @PathVariable int id) {
+        String token = httpServletRequest.getHeader("token");// 从 http 请求头中取出 token
+        if(token==null){
+            return ResponseResult.newFailResult("用户未登陆,请登录后重试");
+        }
         int res = facilityImpl.deleteById(id);
         if (res == 1) {
             return ResponseResult.newSuccessResult();
@@ -42,7 +47,12 @@ public class FacilityController {
     }
 
     @PutMapping("/")
-    public ResponseResult updateFacilityById(@RequestBody FacilityDao facilityDao) {
+    @UserLoginToken
+    public ResponseResult updateFacilityById(HttpServletRequest httpServletRequest, @RequestBody FacilityDao facilityDao) {
+        String token = httpServletRequest.getHeader("token");// 从 http 请求头中取出 token
+        if(token==null){
+            return ResponseResult.newFailResult("用户未登陆,请登录后重试");
+        }
         int res = facilityImpl.updateById(facilityDao);
         if (res == 1) {
             return ResponseResult.newSuccessResult();

@@ -8,16 +8,16 @@ import java.util.List;
 
 @Mapper
 public interface WorkAreaMapper {
-    String fieldListStr = "w_id AS id, w_name AS name, w_scope AS scope, create_time AS createTime, update_time AS updateTime";
+    String fieldListStr = "w_id AS id, w_name AS name, w_scope AS scope, create_time AS createTime, update_time AS updateTime, x, y";
 
-    @Insert("INSERT INTO workarea(w_id, w_name, w_scope) " +
-            "VALUES(#{id}, #{name}, #{scope})")
+    @Insert("INSERT INTO workarea(w_id, w_name, w_scope, x, y) " +
+            "VALUES(#{id}, #{name}, #{scope}, #{x}, #{y})")
     int insertWorkArea(WorkAreaDao workAreaDao);
 
     @Delete("DELETE FROM workarea WHERE w_id = #{id}")
     int deleteWorkAreaById(Integer id);
 
-    @Update("UPDATE workarea SET w_name = #{name}, w_scope = #{scope} WHERE w_id = #{id}")
+    @Update("UPDATE workarea SET w_name = #{name}, w_scope = #{scope}, x = #{x}, y = {y} WHERE w_id = #{id}")
     int updateWorkAreaById(WorkAreaDao workAreaDao);
 
     @Select("SELECT " + fieldListStr + " FROM workarea")
