@@ -21,4 +21,6 @@ public class FacilityWorkAreaDTO {
     private Integer workAreaId;
     private String name;
     private String scope;
+    private Float x;
+    private Float y;
 }
