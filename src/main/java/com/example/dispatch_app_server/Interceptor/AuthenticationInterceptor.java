@@ -9,6 +9,7 @@ import com.example.dispatch_app_server.annotation.PassToken;
 import com.example.dispatch_app_server.annotation.UserLoginToken;
 import com.example.dispatch_app_server.dao.mysql.pojo.LoginRegisterPojo;
 import com.example.dispatch_app_server.service.LoginRegisterService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.method.HandlerMethod;
 import org.springframework.web.servlet.HandlerInterceptor;
@@ -20,9 +21,8 @@ import java.lang.reflect.Method;
 
 /**
  * 拦截器
- * @author qiaoyn
- * @date 2019/06/14
  */
+@Slf4j
 public class AuthenticationInterceptor implements HandlerInterceptor {
 
     @Autowired
@@ -50,7 +50,7 @@ public class AuthenticationInterceptor implements HandlerInterceptor {
             if (userLoginToken.required()) {
                 // 执行认证
                 if (token == null) {
-                    throw new RuntimeException("无token，请重新登录");
+                    log.info("无token，请重新登录");
                 }
                 // 获取 token 中的 user id
                 String userId;
