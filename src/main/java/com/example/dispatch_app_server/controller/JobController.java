@@ -25,7 +25,7 @@ public class JobController {
     public ResponseResult addJob(HttpServletRequest httpServletRequest, @RequestBody JobDTO jobDTO) {
         String token = httpServletRequest.getHeader("token");// 从 http 请求头中取出 token
         if(token==null){
-            return ResponseResult.newFailResult("无token,用户未登陆");
+            return ResponseResult.newFailResult("用户未登陆,请登录后重试");
         }
         JobDao jobDao=JobDao.transJobDtoToPojo(jobDTO);
         int res = jobService.addJob(jobDao);
