@@ -1,5 +1,6 @@
 package com.example.dispatch_app_server.controller;
 
+import com.example.dispatch_app_server.annotation.UserLoginToken;
 import com.example.dispatch_app_server.commons.web.ResponseResult;
 import com.example.dispatch_app_server.dao.mysql.dto.JobDTO;
 import com.example.dispatch_app_server.dao.mysql.pojo.JobDao;
@@ -18,6 +19,7 @@ public class JobController {
     private JobService jobService;
 
     @PostMapping("/")
+    @UserLoginToken
     public ResponseResult addJob(@RequestBody JobDTO jobDTO) {
         JobDao jobDao=JobDao.transJobDtoToPojo(jobDTO);
         int res = jobService.addJob(jobDao);
