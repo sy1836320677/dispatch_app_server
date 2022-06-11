@@ -50,7 +50,7 @@ public class UWController {
         }
     }
 
-    @GetMapping("/queryBindingByUserId/{id}")
+    @GetMapping("/queryUWBindingByUserId/{id}")
     public ResponseResult<List<UserWorkAreaDTO>> getFWListByFacilityId(@PathVariable int id) {
         List<UserWorkAreaDTO> facilityWorkAreaDTOList = userWorkAreaImpl.getUWListByUserId(id);
         if (facilityWorkAreaDTOList.size() < 1) {
@@ -60,7 +60,7 @@ public class UWController {
         }
     }
 
-    @GetMapping("/queryBindingByWorkAreaId/{id}")
+    @GetMapping("/queryUWBindingByWorkAreaId/{id}")
     public ResponseResult<List<UserWorkAreaDTO>> getFWListByWorkAreaId(@PathVariable int id) {
         List<UserWorkAreaDTO> facilityWorkAreaDTOList = userWorkAreaImpl.getUWListByWorkAreaId(id);
         if (facilityWorkAreaDTOList.size() < 1) {
@@ -70,7 +70,7 @@ public class UWController {
         }
     }
 
-    @GetMapping("/queryBinding")
+    @GetMapping("/queryUWBinding")
     public ResponseResult<List<UserWorkAreaDTO>> getFWList() {
         List<UserWorkAreaDTO> facilityWorkAreaDTOList = userWorkAreaImpl.getUWList();
         if (facilityWorkAreaDTOList.size() < 1) {

@@ -50,7 +50,7 @@ public class FWController {
         }
     }
 
-    @GetMapping("/queryBindingByFacilityId/{id}")
+    @GetMapping("/queryFWBindingByFacilityId/{id}")
     public ResponseResult<List<FacilityWorkAreaDTO>> getFWListByFacilityId(@PathVariable int id) {
         List<FacilityWorkAreaDTO> facilityWorkAreaDTOList = facilityWorkAreaImpl.getFWListByFacilityId(id);
         if (facilityWorkAreaDTOList.size() < 1) {
@@ -60,7 +60,7 @@ public class FWController {
         }
     }
 
-    @GetMapping("/queryBindingByWorkAreaId/{id}")
+    @GetMapping("/queryFWBindingByWorkAreaId/{id}")
     public ResponseResult<List<FacilityWorkAreaDTO>> getFWListByWorkAreaId(@PathVariable int id) {
         List<FacilityWorkAreaDTO> facilityWorkAreaDTOList = facilityWorkAreaImpl.getFWListByWorkAreaId(id);
         if (facilityWorkAreaDTOList.size() < 1) {
@@ -70,7 +70,7 @@ public class FWController {
         }
     }
 
-    @GetMapping("/queryBinding")
+    @GetMapping("/queryFWBinding")
     public ResponseResult<List<FacilityWorkAreaDTO>> getFWList() {
         List<FacilityWorkAreaDTO> facilityWorkAreaDTOList = facilityWorkAreaImpl.getFWList();
         if (facilityWorkAreaDTOList.size() < 1) {
